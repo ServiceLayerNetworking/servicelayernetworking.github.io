@@ -65,7 +65,31 @@
         border-radius: 50%;
         margin-bottom: 1rem;
     }
+    .collapsible {
+        cursor: pointer;
+        user-select: none;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .content {
+        display: block;
+        overflow: hidden;
+        border: 0px solid #ccc;
+        padding: 8px;
+        font-size: 14px;
+    }
     </style>
+     <script>
+        function toggleContent(index) {
+            var content = document.getElementById('content' + index);
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="header">
@@ -99,33 +123,70 @@
             </tr>
             <tr>
                 <td>11:10-11:40</td>
-                <td>Blackbox Request Tracing for Modern Cloud Applications</td>
+                <td class="collapsible" onclick="toggleContent(2)">Blackbox Request Tracing for Modern Cloud Applications</td>
                 <td>Sachin Ashok</td>
             </tr>
             <tr>
+                <td colspan="3">
+                    <div class="content" id="content2">
+                        Monitoring and debugging modern cloud-based applications is challenging since even a single API call can involve many inter-dependent distributed microservices. To provide observability for such complex systems, distributed tracing frameworks track request flow across the microservice call tree. However, such solutions require instrumenting every component of the distributed application to add and propagate tracing headers, which has slowed adoption. This paper explores whether tracing requests can be achieved without any application instrumentation, which we refer to as request trace reconstruction. We present TraceWeaver, an optimization framework that incorporates readily available information from production settings (e.g., timestamps) and test environments (e.g., call graphs) to reconstruct request traces with usefully high accuracy. Evaluation with (1) benchmark microservice applications and (2) a production microservice dataset demonstrates high accuracy. We evaluate use cases for TraceWeaver, including A/B testing and finding performance outliers, showing effective results. Finally, we discuss potential future approaches which can aid in improving accuracy and ease of adoption of TraceWeaver.
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td>11:40-12:10</td>
-                <td>SLATE: Service Layer Traffic Engineering</td>
+                <td class="collapsible" onclick="toggleContent(3)">SLATE: Service Layer Traffic Engineering</td>
                 <td>Gangmuk Lim / Aditya Prerepa</td>
             </tr>
             <tr>
+                <td colspan="3">
+                    <div class="content" id="content3">
+                       Abstract goes here...
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td>12:10-12:30</td>
-                <td>Multi-party Load Balancing in the Cloud</td>
+                <td class="collapsible" onclick="toggleContent(4)">Multi-party Load Balancing in the Cloud</td>
                 <td>Talha Waheed</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="content" id="content4">
+                       Abstract goes here...
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>12:30-12:50</td>
                 <td>Break</td>
                 <td></td>
             </tr>
+            
             <tr>
                 <td>12:50-1:10</td>
-                <td>Prioritization</td>
+                <td class="collapsible" onclick="toggleContent(5)">Prioritization</td>
                 <td>Gerard Matthew</td>
             </tr>
             <tr>
+                <td colspan="3">
+                    <div class="content" id="content5">
+                       Abstract goes here...
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
                 <td>1:10-1:30</td>
-                <td>Expressive Policies for Microservice Networks</td>
+                <td class="collapsible" onclick="toggleContent(6)">Expressive Policies for Microservice Networks</td>
                 <td>Karuna Grewal</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="content" id="content6">
+                       Abstract goes here...
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>1:30-2:00</td>
