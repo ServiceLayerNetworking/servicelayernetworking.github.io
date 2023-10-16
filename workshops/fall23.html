@@ -169,10 +169,16 @@
 
             <tr>
                 <td>12:50-1:10 PST</td>
-                <td class="collapsible" onclick="toggleContent(5)">Request Prioritization at the Service Layer</td>
+                <td class="collapsible" onclick="toggleContent(5)">Optimizing Resource Allocation through Request Prioritization in Service Layer Management</td>
                 <td>Gerard Matthew</td>
             </tr>
-
+            <tr>
+                <td colspan="3">
+                    <div class="content" id="content4">
+                        Service Mesh implementations lacks a mechanism for prioritizing requests, treating all incoming requests uniformly. However, in reality, each request holds a distinct level of priority, necessitating a more nuanced approach. Requests contend for limited CPU, memory, and network resources, leading to potential performance disparities. To rectify this, operators often resort to over-scaling their applications to be ahead of bursty demands. In this presentation, we propose an approach that leverages request priority to optimize CPU resource allocation, thereby ensuring enhanced performance for higher-priority requests, particularly in periods of peak activity.
+                    </div>
+                </td>
+            </tr>
             <tr>
                 <td>1:10-1:30 PST</td>
                 <td class="collapsible" onclick="toggleContent(6)">Expressive Policies for Microservice Networks</td>
