@@ -175,7 +175,7 @@
             <tr>
                 <td colspan="3">
                     <div class="content" id="content4">
-                        Service Mesh implementations lacks a mechanism for prioritizing requests, treating all incoming requests uniformly. However, in reality, each request holds a distinct level of priority, necessitating a more nuanced approach. Requests contend for limited CPU, memory, and network resources, leading to potential performance disparities. To rectify this, operators often resort to over-scaling their applications to be ahead of bursty demands. In this presentation, we propose an approach that leverages request priority to optimize CPU resource allocation, thereby ensuring enhanced performance for higher-priority requests, particularly in periods of peak activity.
+                        Service Mesh implementations lack a mechanism for prioritizing requests, treating all incoming requests uniformly. However, in reality, each request holds a distinct level of priority, necessitating a more nuanced approach. Requests contend for limited CPU, memory, and network resources, leading to potential performance disparities. To rectify this, operators often resort to over-scaling their applications to be ahead of bursty demands. In this presentation, we propose an approach that leverages request priority to optimize CPU resource allocation, thereby ensuring enhanced performance for higher-priority requests, particularly in periods of peak activity.
                     </div>
                 </td>
             </tr>
@@ -183,6 +183,14 @@
                 <td>1:10-1:30 PST</td>
                 <td class="collapsible" onclick="toggleContent(6)">Expressive Policies for Microservice Networks</td>
                 <td>Karuna Grewal</td>`
+            </tr>
+
+            <tr>
+                <td colspan="3">
+                    <div class="content" id="content4">
+                        Microservice-based application deployments need to administer safety properties while serving requests. However, today such properties can be specified only in limited ways (primarily whether service A call a certain API on service B), which can lead to overly permissive policies and the potential for illegitimate flow of information across microservices, or ad hoc policy implementations. We argue that a range of use cases require safety properties for the flow of requests across the whole microservice network, rather than only between adjacent hops.  To begin to address this, we propose a system for declaring and deploying service tree policies which are compiled down into declarative filters that are inserted into microservice deployment manifests. Building on the ideas from automata theory, we use a light-weight dynamic monitor based enforcement mechanism. A preliminary prototype shows that we can capture a wide class of policies that we describe as case studies.
+                    </div>
+                </td>
             </tr>
             
             <tr>
