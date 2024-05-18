@@ -53,6 +53,22 @@
         .button:hover {
             background-color: #0047b7;
         }
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            margin-top: 20px;
+        }
+        .gallery {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 48%;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
         footer {
             text-align: center;
             padding: 10px 0;
@@ -100,6 +116,17 @@
         <section id="resources">
             <h2>Resources</h2>
             <p>Find the multi-cluster survey results in <code>multicluster survey result.pdf</code> in the home directory of this repo.</p>
+        </section>
+        <section id="demo-video">
+            <h2>Demo Video</h2>
+            <iframe src="https://www.youtube.com/embed/iBQaaGBQVMA?start=1" allowfullscreen></iframe>
+        </section>
+        <section id="gallery">
+            <h2>Architecture</h2>
+            <div class="gallery">
+                <img src="assets/images/slate/slate_arch.pdf" alt="Placeholder Image 1">
+                <img src="https://via.placeholder.com/350" alt="Placeholder Image 2">
+            </div>
         </section>
     </div>
     <footer>
