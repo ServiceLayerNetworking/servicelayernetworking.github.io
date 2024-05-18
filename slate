@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLATE: Service Layer Traffic Engineering</title>
+</head>
+<body>
+    <header>
+        <h1>SLATE: Service Layer Traffic Engineering</h1>
+        <p>A system that optimizes microservice traffic in real time.</p>
+    </header>
+    <main>
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>This repository houses all the components of Service Layer Traffic Engineering (SLATE), a system that globally optimizes the flow of requests for end-to-end application latency and cost deployed in multi-region environments.</p>
+        </section>
+        <section id="components">
+            <h2>Components</h2>
+            <ul>
+                <li>Global controller: <code>/global-controller</code></li>
+                <li>Data plane: <code>/wasm-plugins/slate-plugin</code></li>
+                <li>Cluster controller: <code>/cluster-controller</code> (optional)</li>
+            </ul>
+        </section>
+        <section id="workflow">
+            <h2>Workflow</h2>
+            <p>The workflow is as follows:</p>
+            <ul>
+                <li>The data plane in every region collects realtime metrics about current load (RPS) and experienced latency of those requests.</li>
+                <li>The global controller builds a load to latency model for each service over time. When feasible, it uses this model in a Mixed-Integer Linear Program and solves for optimal request flow, minimizing latency. This solution is expressed as rules that are pushed to the data plane.</li>
+                <li>The data plane enforces these rules.</li>
+            </ul>
+        </section>
+        <section id="results">
+            <h2>Results</h2>
+            <p>We benchmark on three applications:</p>
+            <ul>
+                <li>Hotel Reservation</li>
+                <li>Online Boutique</li>
+                <li>Alibaba</li>
+            </ul>
+        </section>
+        <section id="resources">
+            <h2>Resources</h2>
+            <p>Find the multi-cluster survey results in <code>multicluster survey result.pdf</code> in the home directory of this repo.</p>
+        </section>
+        <footer>
+            <p>For more information, visit the <a href="https://servicelayernetworking.github.io/">SLATE website</a>.</p>
+        </footer>
+    </main>
+</body>
+</html>
+
