@@ -4,13 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SLATE: Service Layer Traffic Engineering</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #0057e7;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0.5em 0;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin-top: 1em;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            font-size: 1em;
+            color: white;
+            background-color: #0057e7;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0047b7;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #0057e7;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>SLATE: Service Layer Traffic Engineering</h1>
         <p>A system that optimizes microservice traffic in real time.</p>
     </header>
-    <main>
+    <div class="container">
         <section id="overview">
             <h2>Overview</h2>
             <p>This repository houses all the components of Service Layer Traffic Engineering (SLATE), a system that globally optimizes the flow of requests for end-to-end application latency and cost deployed in multi-region environments.</p>
@@ -45,10 +101,9 @@
             <h2>Resources</h2>
             <p>Find the multi-cluster survey results in <code>multicluster survey result.pdf</code> in the home directory of this repo.</p>
         </section>
-        <footer>
-            <p>For more information, visit the <a href="https://servicelayernetworking.github.io/">SLATE website</a>.</p>
-        </footer>
-    </main>
+    </div>
+    <footer>
+        <p>For more information, visit the <a href="https://servicelayernetworking.github.io/" style="color: white;">SLATE website</a>.</p>
+    </footer>
 </body>
 </html>
-
