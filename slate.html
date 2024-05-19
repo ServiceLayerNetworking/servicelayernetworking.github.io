@@ -75,7 +75,32 @@
             background-color: #0057e7;
             color: white;
         }
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .links a {
+            text-decoration: none;
+            color: #0057e7;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+        }
+        .links a:hover {
+            color: #0047b7;
+        }
+        .links i {
+            margin-right: 8px;
+        }
+        .abstract {
+            background-color: #e0f7fa; /* Light cyan background */
+            padding: 20px;
+            border-radius: 5px;
+        }
     </style>
+    
 </head>
 <body>
     <header>
@@ -83,26 +108,57 @@
         <p>A system that optimizes microservice traffic in real time.</p>
     </header>
     <div class="container">
-        <section id="overview">
-            <h2>Overview</h2>
-            <p>This repository houses all the components of Service Layer Traffic Engineering (SLATE), a system that globally optimizes the flow of requests for end-to-end application latency and cost deployed in multi-region environments.</p>
+        <section id="abstract">
+            <h2>Abstract</h2>
+            <p>Optimizing resource provisioning and performance in large microservice-based applications is difficult, especially when applications span multiple datacenters. Existing global load balancing systems use simple capacity-based heuristics. We present Service Layer Traffic Engineering (SLATE), a system that globally optimizes the flow of requests for end-to-end application latency and cost deployed in multi-cluster (multi-zone/region/continent). SLATE exploits global knowledge of all clusters, the multi-hop nature of microservice application, request differentiation and latency modeling. SLATE outperforms existing global load balancing systems(Meta’s ServiceRouter and Google’s Traffic Director) by up to 18.3× in average latency and reduces egress cost by up to 11.6× with the same average latency achieved. Our system is completely transparent to the application and compatible with existing proxies, which makes it pluggable. The entire system can be pluggined into a running deployment seamlessly, with a single command.</p>
         </section>
+
+        <div class="links">
+            <a href="future arxiv link"><i class="fas fa-file-pdf"></i>Paper</a>
+            <a href="https://github.com/ServiceLayerNetworking/SLATE/tree/main"><i class="fab fa-github"></i>Code</a>
+        </div>
+
+        <section id="slate">
+            <h2>SLATE</h2>
+            <p>Service Layer Traffic Engineering (SLATE) is a system that globally optimizes the flow of requests for end-to-end application latency and cost deployed in multi-region environments.</p>
+        </section>
+        <section id="architecture">
+            <h2>Architecture</h2>
+            <div class="figure">
+                <div>
+                    <h3>Global Controller</h3>
+                    <iframe src="assets/images/slate/slate_arch.pdf"></iframe>
+                </div>
+                <div>
+                    <h3>Data Plane(replace with data plane figure)</h3>
+                    <iframe src="assets/images/slate/slate_arch.pdf"></iframe>
+                </div>
+            </div>
+        </section>
+
         <section id="components">
             <h2>Components</h2>
             <ul>
-                <li>Global controller: <code>/global-controller</code></li>
-                <li>Data plane: <code>/wasm-plugins/slate-plugin</code></li>
-                <li>Cluster controller: <code>/cluster-controller</code> (optional)</li>
+                <h2>Global controller</h2>
+                <h2>Data plane</h2>
+                SLATE-proxy is a highly optimized proxy that collects per-request request per second in real time, inflight request with differentiating request at different endpoints. Collected metrics are sent to the global controller every second.
+                It complies with proxy-wasm, meaning it can be plugged into existing L7 proxy such as Envoy, NGINX, etc.
+                <h2>Cluster controller</h2>
             </ul>
         </section>
         <section id="workflow">
-            <h2>Workflow</h2>
-            <p>The workflow is as follows:</p>
-            <ul>
-                <li>The data plane in every region collects realtime metrics about current load (RPS) and experienced latency of those requests.</li>
-                <li>The global controller builds a load to latency model for each service over time. When feasible, it uses this model in a Mixed-Integer Linear Program and solves for optimal request flow, minimizing latency. This solution is expressed as rules that are pushed to the data plane.</li>
-                <li>The data plane enforces these rules.</li>
-            </ul>
+            <h2>Workflow(TODO)</h2>
+            <h3>Profiling mode</h3>
+            <h4>SLATE-proxy &#x2192 Global controller</h4>
+                SLATE-proxy is running in all replicas in every region. It collects real time metrics about current load (RPS) and experienced latency of those requests.  
+            <h4>Global controller &#x2192 SLATE-proxy</h4>
+                The global controller builds a load to latency model for each service over time.
+            <h3>Runtime mode</h3>
+            <h4>SLATE-proxy &#x2192 Global controller</h4>
+                SLATE-proxy turns off per-request RPS monitoring to minimize the overhead. It still reports RPS of different request types every second to the Global controller.
+            <h4>Global controller&#x2192 SLATE-proxy</h4>
+                When feasible, it uses this model in a Mixed-Integer Linear Program and solves for  optimal request flow, minimizing latency and cost. This solution is expressed as rules that are pushed to the data plane. The data plane enforces these rules.
+            
         </section>
         <section id="results">
             <h2>Results</h2>
@@ -113,20 +169,13 @@
                 <li>Alibaba</li>
             </ul>
         </section>
-        <section id="resources">
-            <h2>Resources</h2>
+        <section id="survey">
+            <h2>Multi-cluster survey in istio community</h2>
             <p>Find the multi-cluster survey results in <code>multicluster survey result.pdf</code> in the home directory of this repo.</p>
         </section>
         <section id="demo-video">
-            <h2>Demo Video</h2>
+            <h2>Talk</h2>
             <iframe src="https://www.youtube.com/embed/iBQaaGBQVMA?start=1" allowfullscreen></iframe>
-        </section>
-        <section id="gallery">
-            <h2>Architecture</h2>
-            <div class="gallery">
-                <img src="assets/images/slate/slate_arch.pdf" alt="Placeholder Image 1">
-                <img src="https://via.placeholder.com/350" alt="Placeholder Image 2">
-            </div>
         </section>
     </div>
     <footer>
