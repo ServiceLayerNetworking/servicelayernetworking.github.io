@@ -5,103 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SLATE: Service Layer Traffic Engineering</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-        header {
-            background-color: #0057e7;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            font-size: 2em;
-            margin: 0.5em 0;
-        }
-        h2 {
-            font-size: 1.5em;
-            margin-top: 1em;
-        }
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 20px 0;
-            font-size: 1em;
-            color: white;
-            background-color: #0057e7;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .button:hover {
-            background-color: #0047b7;
-        }
-        iframe {
-            width: 100%;
-            height: 450px;
-            border: none;
-            margin-top: 20px;
-        }
-        .gallery {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .gallery img {
-            width: 48%;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #0057e7;
-            color: white;
-        }
-        .links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        .links a {
-            text-decoration: none;
-            color: #0057e7;
-            font-size: 1.2em;
-            display: flex;
-            align-items: center;
-        }
-        .links a:hover {
-            color: #0047b7;
-        }
-        .links i {
-            margin-right: 8px;
-        }
-        .abstract {
-            background-color: #e0f7fa; /* Light cyan background */
-            padding: 20px;
-            border-radius: 5px;
-        }
-    </style>
-    
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
 </head>
 <body>
     <header>
@@ -109,6 +13,11 @@
         <p>A system that optimizes microservice traffic in real time.</p>
     </header>
     <div class="container">
+        <!-- Inserting the logo PDF before the abstract -->
+        <div class="logo-pdf">
+            <iframe src="assets/images/slate/slate-logo.pdf" width="100%" height="300px"></iframe>
+        </div>
+
         <section id="abstract">
             <h2>Abstract</h2>
             <p>Optimizing resource provisioning and performance in large microservice-based applications is difficult, especially when applications span multiple datacenters. Existing global load balancing systems use simple capacity-based heuristics. We present Service Layer Traffic Engineering (SLATE), a system that globally optimizes the flow of requests for end-to-end application latency and cost deployed in multi-cluster (multi-zone/region/continent). SLATE exploits global knowledge of all clusters, the multi-hop nature of microservice application, request differentiation and latency modeling. SLATE outperforms existing global load balancing systems(Meta’s ServiceRouter and Google’s Traffic Director) by up to 18.3× in average latency and reduces egress cost by up to 11.6× with the same average latency achieved. Our system is completely transparent to the application and compatible with existing proxies, which makes it pluggable. The entire system can be pluggined into a running deployment seamlessly, with a single command.</p>
@@ -122,7 +31,13 @@
 
         <section id="slate">
             <h2>SLATE</h2>
-            <p>Service Layer Traffic Engineering (SLATE) is a system that globally optimizes the flow of requests for end-to-end application latency and cost deployed in multi-region environments.</p>
+            <p>Service Layer Traffic Engineering (SLATE) is a system that globally optimizes the flow of requests for end-to-end application latency and cost deployed in multi-region environments.<br>
+            SLATE is architected in a hierarchical manner with Global controller, Cluster controller, and data plane(slate- proxy). <br>
+
+            SLATE-proxy is high performance proxy module residing in request path. It monitors telemetry in each microservice replica and report them to the Global controller, including load, information of different request types, and child-parent service relationship.<br>
+                
+            With given information, Global controller constructs the call trees, classifies traffic into subclasses based on distinctive characteristics, learn latency functions of each class and optimizes request routing. Optimized rule will be pushed down to the data plane through Cluster controller, which enforces the rules.<br>
+            </p>
         </section>
         <section id="architecture">
             <h2>Architecture</h2>
@@ -132,24 +47,32 @@
                     <iframe src="assets/images/slate/slate_arch.pdf"></iframe>
                 </div>
                 <div>
-                    <h3>Data Plane(TODO)</h3>
-                    <iframe src="assets/images/slate/slate_arch.pdf"></iframe>
+                    <h3>slate-proxy (data plane)</h3>
+                    <iframe src="assets/images/slate/dataplane_arch.pdf"></iframe>
                 </div>
             </div>
         </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>
+            gangmuk2 at illinois dot edu <br>
+            prerepa2 at illinois dot edu
+        </p>
+            </section>
 
-        <section id="components">
-            <h2>Components(TODO)</h2>
+        <!-- <section id="components">
+            <h2>Components</h2>
             <ul>
                 <h2>Global controller</h2>
+                
                 <h2>Data plane</h2>
                 SLATE-proxy is a highly optimized proxy that collects per-request request per second in real time, inflight request with differentiating request at different endpoints. Collected metrics are sent to the global controller every second.
                 It complies with proxy-wasm, meaning it can be plugged into existing L7 proxy such as Envoy, NGINX, etc.
                 <h2>Cluster controller</h2>
             </ul>
-        </section>
-        <section id="workflow">
-            <h2>Workflow(TODO)</h2>
+        </section> -->
+        <!-- <section id="workflow">
+            <h2>Workflow</h2>
             <h3>Profiling mode</h3>
             <h4>SLATE-proxy &#x2192 Global controller</h4>
                 SLATE-proxy is running in all replicas in every region. It collects real time metrics about current load (RPS) and experienced latency of those requests.  
@@ -161,8 +84,8 @@
             <h4>Global controller&#x2192 SLATE-proxy</h4>
                 When feasible, it uses this model in a Mixed-Integer Linear Program and solves for  optimal request flow, minimizing latency and cost. This solution is expressed as rules that are pushed to the data plane. The data plane enforces these rules.
             
-        </section>
-        <section id="results">
+        </section> -->
+        <!-- <section id="results">
             <h2>Results</h2>
             <p>TODO</p>
         </section>
@@ -176,7 +99,7 @@
             Respondents are the companies who are deploying their services in multi-cluster (number of responses: 38).</br>
             Summarized result (TODO)</br>
             You can find the full result <a href="https://github.com/ServiceLayerNetworking/SLATE/blob/main/multicluster%20survey%20reult.pdf"><i class="fas fa-file-pdf"></i>here</a>.</p>
-        </section>
+        </section> -->
     </div>
     <!-- <footer>
         <p>For more information, visit the <a href="https://servicelayernetworking.github.io/" style="color: white;">SLATE website</a>.</p>
