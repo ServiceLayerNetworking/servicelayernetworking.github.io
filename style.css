@@ -51,6 +51,7 @@ iframe {
     height: 450px;
     border: none;
     margin-top: 20px;
+    background-color: transparent; /* Ensure iframe background is transparent */
 }
 .gallery {
     display: flex;
