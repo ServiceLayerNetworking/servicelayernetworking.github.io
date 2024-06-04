@@ -15,8 +15,7 @@
     <div class="container">
         <!-- Inserting the logo PDF before the abstract -->
         <div class="logo-figure">
-            <img src="assets/images/slate/slate-logo.png" width="70%" style="display: block; margin: auto;">
-
+            <img src="assets/images/slate/slate-logo.png" width="50%" style="display: block; margin: auto;">
         </div>
 
         <section id="abstract">
@@ -30,10 +29,34 @@
             <a href="https://github.com/ServiceLayerNetworking/SLATE/blob/main/multicluster%20survey%20reult.pdf"><i class="fa-solid fa-square-poll-vertical"></i>Multi-cluster survey</a>
         </div>
 
-        <section id="slate">
-            <h2>SLATE</h2>
-            <p>Service Layer Traffic Engineering (SLATE) is a system that globally optimizes the flow of requests for end-to-end application latency and cost deployed in multi-region environments.<br>
-            SLATE is architected in a hierarchical manner with Global controller, Cluster controller, and data plane(slate- proxy). <br>
+        <section id="usecase">
+            <h2>1. Global optimization!</h2>
+            <h2>Use case: Minimizing latency in multi-zone/region deployment</h2>
+            <p>use case 1 description</p>
+            <div class="usecase-figure">
+                <!-- <img src="assets/images/slate/usecase1.png" width="10%" style="display: block; margin: auto;"> -->
+                <img src="assets/images/slate/us-map.jpg" width="70%" style="display: block; margin: auto;">
+            </div>
+
+            <h2>2. Multi-hop routing! </h2>
+            <h2>Use case: minimizing egress cost</h2>
+            <p>use case 2 description</p>
+            <div class="usecase-figure">
+                <img src="assets/images/slate/usecase2.png" width="50%" style="display: block; margin: auto;">
+            </div>
+
+            <h2>3. Traffic segmentation</h2>
+            <h2>Use case: Differentiate different requests in request routing</h2>
+            <p>use case 3 description</p>
+            <div class="usecase-figure">
+                <img src="assets/images/slate/usecase3.png" width="50%" style="display: block; margin: auto;">
+            </div>
+
+        </section>
+
+        <!-- <section id="design">
+            <h2>Design</h2>
+            <p>SLATE is architected in a hierarchical manner with Global controller, Cluster controller, and data plane(slate- proxy). <br>
 
             SLATE-proxy is high performance proxy module residing in request path. It monitors telemetry in each microservice replica and report them to the Global controller, including load, information of different request types, and child-parent service relationship.<br>
                 
@@ -52,7 +75,7 @@
                     <img src="assets/images/slate/dataplane_arch.png" width="100%"></img>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- <section id="components">
             <h2>Components</h2>
