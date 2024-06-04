@@ -30,26 +30,27 @@
         </div>
 
         <section id="usecase">
-            <h2>1. Global optimization!</h2>
-            <h2>Use case: Minimizing latency in multi-zone/region deployment</h2>
-            <p>use case 1 description</p>
+            <h2>What SLATE can do</h2>
+            <h3>1. Global optimization!</h3>
+            <h4>Use case: Minimizing latency in multi-zone/region deployment</h4>
+            <p>The clusters are running in Oregon, Salt Lake City, Iowa, South Carolina regions and Oregon and Iowa are overloaded suddenly. SLATE will optimize request routing that minimize latency considering how much each cluster is overloaded and inter-cluster network latency within a few second.</p>
             <div class="usecase-figure">
                 <!-- <img src="assets/images/slate/usecase1.png" width="10%" style="display: block; margin: auto;"> -->
-                <img src="assets/images/slate/us-map.jpg" width="70%" style="display: block; margin: auto;">
+                <img src="assets/images/slate/us-map.jpg" width="60%" style="display: block; margin: auto;">
             </div>
 
-            <h2>2. Multi-hop routing! </h2>
-            <h2>Use case: minimizing egress cost</h2>
-            <p>use case 2 description</p>
+            <h3>2. Multi-hop routing! </h3>
+            <h4>Use case: minimizing egress cost</h4>
+            <p>Different requests in each service have different call size. In the example application, the call size in MP&#8594DB is much larger than the one in FR&#8594MP. DB service is degraded in us-west1-b region. SLATE automatically routes requests that can minimize cost as well as latency with multi-hop considered. Green arrow is cost optimal path. Red arrow is single-hop locality fail over which is default fail over mechanism used in service mesh like Istio.</p>
             <div class="usecase-figure">
-                <img src="assets/images/slate/usecase2.png" width="50%" style="display: block; margin: auto;">
+                <img src="assets/images/slate/usecase2.png" width="40%" style="display: block; margin: auto;">
             </div>
 
-            <h2>3. Traffic segmentation</h2>
-            <h2>Use case: Differentiate different requests in request routing</h2>
-            <p>use case 3 description</p>
+            <h3>3. Traffic segmentation!</h3>
+            <h4>Use case: Differentiating requests</h4>
+            <p>Being executed in the same service does not mean that all requests are same. In the example application, each service has two request types: /LU and /DA, where /DA is significantly more expensive than /LU. SLATE differentiates them and routes small number of /DA requests first, alleviating us-west1-b cluster more effectively and quickly. </p>
             <div class="usecase-figure">
-                <img src="assets/images/slate/usecase3.png" width="50%" style="display: block; margin: auto;">
+                <img src="assets/images/slate/usecase3.png" width="40%" style="display: block; margin: auto;">
             </div>
 
         </section>
@@ -114,7 +115,7 @@
         </section>
 
         <section id="survey">
-            <h2>Multi-cluster survey in istio community</h2>
+            <h2>Multi-cluster survey in Istio community</h2>
             <p>We also conducted a survey in the Istio community on their Kubernetes multi-cluster deployment patterns to understand the need for optimizing request routing. </br>
                 This survey includes 18 questions regarding their current multi-cluster deployment with load balancing they are using, interest in cross cluster routing.
             Respondents are the companies who are deploying their services in multi-cluster (number of responses: 38).</br>
